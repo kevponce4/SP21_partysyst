@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Abby_Player : MonoBehaviour
 {
 
     #region attack_vars
