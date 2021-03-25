@@ -89,8 +89,17 @@ public class Enemy : MonoBehaviour
         curr_health -= dmg;
         if (curr_health <= 0)
         {
+            OnDeath();
             Destroy(this.gameObject);
         }
+    }
+
+    private Player player_script;
+
+    public void OnDeath()
+    {
+        player_script = play_ref;
+        player_script.size_up();
     }
 
     #endregion

@@ -133,6 +133,17 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region Size_func
+
+    public int curr_size;
+
+    public void size_up()
+    {
+        curr_size++;
+    }
+
+    #endregion
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         GameObject item = other.gameObject;
