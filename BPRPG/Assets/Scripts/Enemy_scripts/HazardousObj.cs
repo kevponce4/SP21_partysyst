@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HazardousObj : MonoBehaviour
 {
+    [SerializeField]
     private int dmg;
-    private Vivian_Player player;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +19,11 @@ public class HazardousObj : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        GameObject item = other.gameObject;
-
-        if(item.name == "Spikes1")
+        if (other.transform.CompareTag("Player"))
         {
-            player = GetComponent<Vivian_Player>();
-            player.TakeDamage(dmg);
+            other.transform.GetComponent<Player>().TakeDamage(dmg);
         }
     }
 }

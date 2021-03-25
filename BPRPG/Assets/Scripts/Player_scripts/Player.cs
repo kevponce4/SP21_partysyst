@@ -13,6 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     [Tooltip("amount of damage basic attack deals to enemy")]
     private int dmg;
+
+    // things added for flamethrower class !
+    [SerializeField]
+    private Flamethrower flames;
+    private float flameCD = 1f;
+    private float flattacktimer;
+    private bool flExist;
+    private bool lastdir;
     #endregion
 
     #region UI/Health_vars
@@ -53,6 +61,9 @@ public class Player : MonoBehaviour
         vert_vel = 0;
         curr_health = max_health;
         attack_timer = 0f;
+
+        //flamethrwer
+        flExist = false;
     }
 
     // Update is called once per frame
@@ -67,6 +78,17 @@ public class Player : MonoBehaviour
         } else if (attack_timer > 0)
         {
             attack_timer -= Time.deltaTime;
+        }
+
+        //also for flamethrower cuz im confused
+        if (flattacktimer > 0)
+        {
+            flattacktimer -= Time.deltaTime;
+        }
+        if (Input.GetKeyDown("k") && flattacktimer <= 0)
+        {
+            flattacktimer = flameCD;
+            Flame();
         }
     }
     #endregion
@@ -131,6 +153,15 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(hitboxtiming);
     }
 
+    private void Flame()
+    {
+        Flamethrower.dir = lastdir;
+        Instantiate(flames, this.transform.position + new Vector3(2, 0, 0), this.transform.rotation);
+        //you need to make a bullet before you make attack ideally
+        //set the bulets velocity
+        //look up instantaite
+    }
+
     #endregion
 
     #region Size_func
@@ -142,6 +173,18 @@ public class Player : MonoBehaviour
         curr_size++;
     }
 
+    #endregion
+
+
+    #region health_func
+    public void TakeDamage(int dmg)
+    {
+        curr_health -= dmg;
+        if (curr_health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     #endregion
 
     private void OnTriggerEnter2D(Collider2D other)

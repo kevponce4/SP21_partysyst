@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
+        curr_health = max_health;
         enemyRB = GetComponent<Rigidbody2D>();
         startingpos = new Vector2(enemyRB.position.x, enemyRB.position.y);
     }
