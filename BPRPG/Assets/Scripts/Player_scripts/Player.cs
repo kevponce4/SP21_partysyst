@@ -106,6 +106,7 @@ public class Player : MonoBehaviour
         {
             cur_direction = new Vector2(x_input / x_input, 0);
             PlayerRB.velocity = new Vector2(x_input * move_speed, vert_vel);
+            lastdir = (x_input > 0);
         }
         else
         {

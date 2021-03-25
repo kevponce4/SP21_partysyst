@@ -6,6 +6,8 @@ TagManager:
   tags:
   - floor
   - Enemy
+  - Projectile
+  - Flammable
   layers:
   - Default
   - TransparentFX
