@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
 
     #region Unity_vars
     private Rigidbody2D PlayerRB;
-    public int layer;
     #endregion
 
     #region Movement_vars
