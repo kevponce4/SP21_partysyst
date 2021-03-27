@@ -15,16 +15,22 @@ public class Player : MonoBehaviour
     private int dmg;
 
     // holds status/power of the player (gained from collecting crystal)
-    private enum power {None, Fire}; // add more...
+    private enum power {None, Fire, Ice}; // add more...
     power status = power.None;
 
     // things added for flamethrower class !
+    private float attacktimer;
+
     [SerializeField]
     private Flamethrower flames;
     private float flameCD = 1f;
-    private float flattacktimer;
     private bool flExist;
-    private bool lastdir;
+    public bool lastdir;
+
+    // things added for ice atk
+    [SerializeField]
+    private Icicle ice;
+    private float iceCD = 0.5f;
     #endregion
 
     #region UI/Health_vars
@@ -85,14 +91,20 @@ public class Player : MonoBehaviour
         }
 
         //also for flamethrower cuz im confused
-        if (flattacktimer > 0)
+        if (attacktimer > 0)
         {
-            flattacktimer -= Time.deltaTime;
+            attacktimer -= Time.deltaTime;
         }
-        if (Input.GetKeyDown("k") && flattacktimer <= 0 && status == power.Fire)
-        {
-            flattacktimer = flameCD;
-            Flame();
+        if (Input.GetKeyDown("k") && attacktimer <= 0) {
+            if (status == power.Fire)
+            {
+                attacktimer = flameCD;
+                Flame();
+            } else {
+                // @abby idk how youre handling the statuses, so feel free to change to elseif
+                attacktimer = iceCD;
+                Ice();
+            }
         }
     }
     #endregion
@@ -165,6 +177,19 @@ public class Player : MonoBehaviour
         //you need to make a bullet before you make attack ideally
         //set the bulets velocity
         //look up instantaite
+    }
+
+    private void Ice()
+    {
+        if (lastdir) {
+            Instantiate(ice, this.transform.position + new Vector3(1, 1, 0).normalized, this.transform.rotation).transform.Rotate(0,0,30);
+            Instantiate(ice, this.transform.position + new Vector3(1, 0, 0), this.transform.rotation).transform.Rotate(0,0,0);
+            Instantiate(ice, this.transform.position + new Vector3(1, -1, 0).normalized, this.transform.rotation).transform.Rotate(0,0,-30);
+        } else {
+            Instantiate(ice, this.transform.position + new Vector3(-1, 1, 0).normalized, this.transform.rotation).transform.Rotate(0,0,-30);
+            Instantiate(ice, this.transform.position + new Vector3(-1, 0, 0), this.transform.rotation).transform.Rotate(0,0,0);
+            Instantiate(ice, this.transform.position + new Vector3(-1, -1, 0).normalized, this.transform.rotation).transform.Rotate(0,0,30);
+        }
     }
 
     #endregion

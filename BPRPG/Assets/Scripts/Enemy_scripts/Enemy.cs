@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
         curr_health = max_health;
         enemyRB = GetComponent<Rigidbody2D>();
         startingpos = new Vector2(enemyRB.position.x, enemyRB.position.y);
+        play_ref = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
