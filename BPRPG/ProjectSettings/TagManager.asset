@@ -9,6 +9,8 @@ TagManager:
   - Projectile
   - Flammable
   - feet
+  - fireCrystal
+  - iceCrystal
   layers:
   - Default
   - TransparentFX

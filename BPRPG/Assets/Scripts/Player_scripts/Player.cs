@@ -100,8 +100,8 @@ public class Player : MonoBehaviour
             {
                 attacktimer = flameCD;
                 Flame();
-            } else {
-                // @abby idk how youre handling the statuses, so feel free to change to elseif
+            } else if (status == power.Ice) 
+            {
                 attacktimer = iceCD;
                 Ice();
             }
@@ -221,9 +221,16 @@ public class Player : MonoBehaviour
     {
         GameObject item = other.gameObject;
 
-        if(item.name == "FlameCrystal") //could do by name or tag??
+        if(item.tag == "fireCrystal")
         {
-            status = power.Fire; // Recieve power up, change, transform whatever
+            status = power.Fire; 
+            Debug.Log(status);
+            Destroy(item);
+        }
+
+        if(item.tag == "iceCrystal")
+        {
+            status = power.Ice; 
             Debug.Log(status);
             Destroy(item);
         }
