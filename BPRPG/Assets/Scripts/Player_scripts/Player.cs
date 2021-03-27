@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
     [Tooltip("amount of damage basic attack deals to enemy")]
     private int dmg;
 
+    // holds status/power of the player (gained from collecting crystal)
+    private enum power {None, Fire}; // add more...
+    power status = power.None;
+
     // things added for flamethrower class !
     [SerializeField]
     private Flamethrower flames;
@@ -85,7 +89,7 @@ public class Player : MonoBehaviour
         {
             flattacktimer -= Time.deltaTime;
         }
-        if (Input.GetKeyDown("k") && flattacktimer <= 0)
+        if (Input.GetKeyDown("k") && flattacktimer <= 0 && status == power.Fire)
         {
             flattacktimer = flameCD;
             Flame();
@@ -192,9 +196,10 @@ public class Player : MonoBehaviour
     {
         GameObject item = other.gameObject;
 
-        if(item.name == "CrystalName1") //could do by name or tag??
+        if(item.name == "FlameCrystal") //could do by name or tag??
         {
-            Debug.Log("You got the crystal!"); // Recieve power up, change, transform whatever
+            status = power.Fire; // Recieve power up, change, transform whatever
+            Debug.Log(status);
             Destroy(item);
         }
 
