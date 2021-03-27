@@ -13,6 +13,6 @@ public class Feet : MonoBehaviour
         {
             Pl.can_jump = true;
         }
-        Debug.Log(Pl.can_jump);
+        // Debug.Log(Pl.can_jump);
     }
 }

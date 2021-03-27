@@ -8,21 +8,21 @@ public class Enemy : MonoBehaviour
     #region Health_vars
     [SerializeField]
     [Tooltip("maximum health player can have")]
-    private int max_health;
-    private int curr_health;
+    protected int max_health;
+    protected int curr_health;
     #endregion
 
     #region Movement_vars
-    private Rigidbody2D enemyRB;
-    private Player play_ref;
+    protected Rigidbody2D enemyRB;
+    protected Player play_ref;
     [SerializeField]
-    private bool left_ind;
+    protected bool left_ind;
     [SerializeField]
-    private bool right_ind;
-    private Vector2 startingpos;
+    protected bool right_ind;
+    protected Vector2 startingpos;
 
     [SerializeField]
-    private float movespeed;
+    protected float movespeed;
 
 
 
