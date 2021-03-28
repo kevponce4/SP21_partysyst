@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class Player : MonoBehaviour
     [Tooltip("maximum health player can have")]
     private int max_health;
     private int curr_health;
+    [SerializeField]
+    private Slider HpBar;
     #endregion
 
     #region Unity_vars
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour
 
         //flamethrwer
         flExist = false;
+        HpBar.value = 1;
     }
 
     // Update is called once per frame
@@ -212,6 +216,9 @@ public class Player : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         curr_health -= dmg;
+        float tempcur =  curr_health;
+        float tempmax = max_health;
+        HpBar.value =  tempcur /  tempmax;
         if (curr_health <= 0)
         {
             Destroy(this.gameObject);
