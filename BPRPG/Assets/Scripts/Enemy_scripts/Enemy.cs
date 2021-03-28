@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     [Tooltip("number of frames between attacks")]
     protected int attack_delay;
     protected int attack_timer;
+    [SerializeField]
     protected int attack_damage;
     
     #endregion
@@ -115,12 +116,21 @@ public class Enemy : MonoBehaviour
 
     #region Attack_funcs
     
-    private void OnCollisionEnter2D(Collision collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.transform.gameObject.CompareTag("Player") && attack_timer <= 0)
         {
+            Debug.Log("I'm colliding with a player");
             collision.transform.GetComponent<Player>().TakeDamage(attack_damage);
             attack_timer = attack_delay;
+        }
+    }
+
+    protected void update_attack_timer()
+    {
+        if (attack_timer > 0)
+        {
+            attack_timer--;
         }
     }
 

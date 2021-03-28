@@ -667,6 +667,8 @@ MonoBehaviour:
   left_ind: 0
   right_ind: 0
   movespeed: 5
+  attack_delay: 60
+  attack_damage: 1
 --- !u!1 &1835337511
 GameObject:
   m_ObjectHideFlags: 0
