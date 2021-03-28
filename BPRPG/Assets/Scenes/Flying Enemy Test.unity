@@ -568,11 +568,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff2043461761f44f95d85c5fc79afcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 0
+  max_health: 10
   left_ind: 0
   right_ind: 0
   movespeed: 5
-  patrol_distance: 0
+  attack_delay: 60
+  attack_damage: 1
+  patrol_distance: 3
+  patrol_speed: 2
 --- !u!1 &1835337511
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxtiming: 0.5
+  attack_range: 0
   dmg: 2
   flames: {fileID: 0}
   max_health: 5
