@@ -568,11 +568,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff2043461761f44f95d85c5fc79afcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 0
+  max_health: 10
   left_ind: 0
   right_ind: 0
   movespeed: 5
-  patrol_distance: 0
+  patrol_distance: 3
+  patrol_speed: 2
 --- !u!1 &1835337511
 GameObject:
   m_ObjectHideFlags: 0

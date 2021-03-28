@@ -9,10 +9,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     [Tooltip("the time untill the hitbox is created")]
     private float hitboxtiming;
-    private float attack_timer;
+    [SerializeField]
+    private float attack_range;
     [SerializeField]
     [Tooltip("amount of damage basic attack deals to enemy")]
     private int dmg;
+    private float attack_timer;
 
     // holds status/power of the player (gained from collecting crystal)
     private enum power {None, Fire}; // add more...
@@ -146,7 +148,7 @@ public class Player : MonoBehaviour
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(hitboxtiming);
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + cur_direction, Vector2.one, 0f, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + cur_direction, new Vector2(attack_range, attack_range), 0f, Vector2.zero);
 
         foreach (RaycastHit2D hit in hits)
         {
