@@ -700,12 +700,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxtiming: 0.5
+  attack_range: 1
   dmg: 2
+  flames: {fileID: 0}
   max_health: 5
   move_speed: 10
   jump_vel: 10
   can_jump: 0
   jump_len: 2
+  curr_size: 0
 --- !u!50 &1835337513
 Rigidbody2D:
   serializedVersion: 4

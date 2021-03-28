@@ -23,9 +23,15 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     protected float movespeed;
+    #endregion
 
-
-
+    #region Attack_vars
+    [SerializeField]
+    [Tooltip("number of frames between attacks")]
+    protected int attack_delay;
+    protected int attack_timer;
+    protected int attack_damage;
+    
     #endregion
 
     #region Unity_Funcs
@@ -41,6 +47,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Move();
+
+        if (attack_timer > 0)
+        {
+            attack_timer--;
+        }
     }
     #endregion
 
@@ -98,6 +109,19 @@ public class Enemy : MonoBehaviour
     public void OnDeath()
     {
         play_ref.size_up();
+    }
+
+    #endregion
+
+    #region Attack_funcs
+    
+    private void OnCollisionEnter2D(Collision collision)
+    {
+        if (collision.transform.gameObject.CompareTag("Player") && attack_timer <= 0)
+        {
+            collision.transform.GetComponent<Player>().TakeDamage(attack_damage);
+            attack_timer = attack_delay;
+        }
     }
 
     #endregion
