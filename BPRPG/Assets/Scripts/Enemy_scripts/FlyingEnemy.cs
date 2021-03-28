@@ -16,6 +16,7 @@ public class FlyingEnemy : Enemy
     private void Update()
     {
         Move();
+        update_attack_timer();
 
         // Set the enemy's direction to face the direction they are moving
         if (enemyRB.velocity.x > 0)
