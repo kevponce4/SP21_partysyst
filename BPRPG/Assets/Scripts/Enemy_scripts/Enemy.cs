@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     #region Movement_vars
     protected Rigidbody2D enemyRB;
     protected Player play_ref;
+    protected Player size_ref;
     [SerializeField]
     protected bool left_ind;
     [SerializeField]
@@ -35,7 +36,7 @@ public class Enemy : MonoBehaviour
         curr_health = max_health;
         enemyRB = GetComponent<Rigidbody2D>();
         startingpos = new Vector2(enemyRB.position.x, enemyRB.position.y);
-        play_ref = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        size_ref = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -100,7 +101,7 @@ public class Enemy : MonoBehaviour
 
     public void OnDeath()
     {
-        player_script = play_ref;
+        player_script = size_ref;
         player_script.size_up();
     }
 
