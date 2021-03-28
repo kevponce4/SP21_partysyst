@@ -95,12 +95,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private Player player_script;
-
     public void OnDeath()
     {
-        player_script = play_ref;
-        player_script.size_up();
+        play_ref.size_up();
     }
 
     #endregion
