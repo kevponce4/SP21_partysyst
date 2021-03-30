@@ -514,7 +514,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 3c528537c6e4fa04d919c9e6dd359377, type: 3}
   m_Color: {r: 0.854902, g: 0.29803923, b: 0.25490198, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -612,7 +612,10 @@ MonoBehaviour:
   attack_range: 0
   dmg: 2
   flames: {fileID: 0}
+  lastdir: 0
+  ice: {fileID: 0}
   max_health: 5
+  HpBar: {fileID: 0}
   move_speed: 10
   jump_vel: 10
   can_jump: 0
