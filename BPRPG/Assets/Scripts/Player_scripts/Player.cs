@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     private float jump_len;
     private float vert_vel;
     private Vector2 cur_direction;
+    private IEnumerator jumped = null;
 
     #endregion
 
@@ -126,9 +127,15 @@ public class Player : MonoBehaviour
     {
         if(y_input > 0 && can_jump)
         {
+            jumped = jumping();
             can_jump = false;
-            StartCoroutine(jumping());
+            StartCoroutine(jumped);
             //vert_vel = jump_vel;
+        } else if ( y_input <= 0 && !can_jump && jumped !=null)
+        {
+            StopCoroutine(jumped);
+            vert_vel = 0;
+            jumped = null;
         }
         if(x_input != 0)
         {
