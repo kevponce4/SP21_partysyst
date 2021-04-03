@@ -88,6 +88,12 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
         move();
+        if (Input.GetKeyDown("space"))
+        {
+            if (curr_size > 0) {
+                curr_size--;
+            }
+        }
         if( attack_timer<= 0  && ( Input.GetKeyDown("i") || Input.GetKeyDown("z")))
         {
             StartCoroutine(Attack());
@@ -203,10 +209,15 @@ public class Player : MonoBehaviour
     #region Size_func
 
     public int curr_size;
+    [SerializeField]
+    [Tooltip("Maximum size a player can carry")]
+    private int max_size;
 
     public void size_up()
     {
-        curr_size++;
+        if (curr_size < max_size) {
+            curr_size++;
+        }
     }
 
     #endregion

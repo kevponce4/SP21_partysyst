@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3476598829087518577}
   m_Layer: 0
   m_Name: feet
-  m_TagString: Untagged
+  m_TagString: feet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3476598829435490515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: -3.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 3476598829087518582}
@@ -202,6 +202,7 @@ MonoBehaviour:
   can_jump: 0
   jump_len: 2
   curr_size: 0
+  max_size: 5
 --- !u!70 &3476598829435490348
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

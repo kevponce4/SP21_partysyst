@@ -26,6 +26,10 @@ public class Enemy : MonoBehaviour
     protected float movespeed;
     #endregion
 
+    #region Spawner_vars
+    protected Spawner parent;
+    #endregion
+
     #region Attack_vars
     [SerializeField]
     [Tooltip("number of frames between attacks")]
@@ -96,6 +100,12 @@ public class Enemy : MonoBehaviour
     {
         play_ref = pl;
     }
+
+    public Enemy setSpawner(Spawner s)
+    {
+        parent = s;
+        return this;
+    }
     #endregion
 
     #region Health_funcs
@@ -112,6 +122,10 @@ public class Enemy : MonoBehaviour
     public void OnDeath()
     {
         size_ref.size_up();
+        if (parent != null)
+        {
+            parent.despawned();
+        }
     }
 
     #endregion
