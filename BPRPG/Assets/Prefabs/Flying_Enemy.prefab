@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3458514424416615859}
   - component: {fileID: 3458514424416615856}
   - component: {fileID: 3458514424416615857}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LineOfSight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 3458514424766637129}
   - component: {fileID: 3458514424766637134}
   - component: {fileID: 3458514424766637135}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flying_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

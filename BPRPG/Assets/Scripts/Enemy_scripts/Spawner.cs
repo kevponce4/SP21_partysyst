@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnTimer > 0)
+        if (spawnTimer > 0 && currEnemies < maxEnemies)
         {
             spawnTimer -= Time.deltaTime;
         } else if (currEnemies < maxEnemies) 
@@ -43,8 +43,7 @@ public class Spawner : MonoBehaviour
 
     void spawn()
     {
-        Instantiate(enemyF, this.transform.position + new Vector3(2, 0, 0), 
-            this.transform.rotation).setSpawner(this);
+        Instantiate(enemyF, this.transform.position, this.transform.rotation).setSpawner(this);
         currEnemies++;
         spawnTimer = spawnCD;
     }
