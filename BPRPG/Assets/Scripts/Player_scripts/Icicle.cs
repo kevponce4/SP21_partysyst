@@ -50,6 +50,9 @@ public class Icicle : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     { // if what we collided with is the enemy
+        if (col.transform.CompareTag("Switch")) {
+            col.transform.GetComponent<IceSwitch>().callSwitch();
+        }
         if (col.transform.CompareTag("Enemy"))
         {
             col.transform.GetComponent<Enemy>().TakeDamage(iceDMG);
