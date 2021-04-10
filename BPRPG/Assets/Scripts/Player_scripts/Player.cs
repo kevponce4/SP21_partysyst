@@ -67,6 +67,10 @@ public class Player : MonoBehaviour
     private Vector2 cur_direction;
     private IEnumerator jumped = null;
 
+    [SerializeField]
+    [Tooltip("rate at which it grows")]
+    private float growthRate;
+
     #endregion
 
     #region Unity_funcs
@@ -93,7 +97,7 @@ public class Player : MonoBehaviour
         {
             if (curr_size > 0) {
                 curr_size--;
-                this.transform.localScale = new Vector3(this.transform.localScale.x - 1f, this.transform.localScale.y - 1f, this.transform.localScale.z - 1f);
+                this.transform.localScale = new Vector3(this.transform.localScale.x - growthRate, this.transform.localScale.y - growthRate, this.transform.localScale.z - growthRate);
             }
         }
         if( attack_timer<= 0  && ( Input.GetKeyDown("i") || Input.GetKeyDown("z")))
@@ -225,7 +229,8 @@ public class Player : MonoBehaviour
     {
         if (curr_size < max_size) {
             curr_size++;
-            this.transform.localScale = new Vector3(1.5f + curr_size, 1.5f + curr_size, 1f + curr_size);
+            float scale = curr_size * growthRate;
+            this.transform.localScale = new Vector3(1.5f + scale, 1.5f + scale, 1f + scale);
         }
 
     }
