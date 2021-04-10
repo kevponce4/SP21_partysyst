@@ -12,6 +12,7 @@ TagManager:
   - fireCrystal
   - iceCrystal
   - Switch
+  - sizeCrystal
   layers:
   - Default
   - TransparentFX

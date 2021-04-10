@@ -93,6 +93,7 @@ public class Player : MonoBehaviour
         {
             if (curr_size > 0) {
                 curr_size--;
+                this.transform.localScale = new Vector3(this.transform.localScale.x - 1f, this.transform.localScale.y - 1f, this.transform.localScale.z - 1f);
             }
         }
         if( attack_timer<= 0  && ( Input.GetKeyDown("i") || Input.GetKeyDown("z")))
@@ -224,7 +225,9 @@ public class Player : MonoBehaviour
     {
         if (curr_size < max_size) {
             curr_size++;
+            this.transform.localScale = new Vector3(1.5f + curr_size, 1.5f + curr_size, 1f + curr_size);
         }
+
     }
 
     #endregion
@@ -259,6 +262,14 @@ public class Player : MonoBehaviour
         {
             status = power.Ice; 
             Debug.Log(status);
+            Destroy(item);
+        }
+
+        if(item.tag == "sizeCrystal")
+        {
+            size_up();
+            status = power.None; 
+            Debug.Log(status); // should stay at default None? or make new enum?
             Destroy(item);
         }
 
