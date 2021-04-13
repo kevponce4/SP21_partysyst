@@ -15,7 +15,6 @@ TagManager:
   - Ice Barrier
   - Fire Barrier
   - sizeCrystal
-
   layers:
   - Default
   - TransparentFX
