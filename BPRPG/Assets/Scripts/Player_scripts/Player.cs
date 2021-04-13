@@ -304,8 +304,6 @@ public class Player : MonoBehaviour
         if(item.tag == "sizeCrystal")
         {
             size_up();
-            status = power.None; 
-            Debug.Log(status); // should stay at default None? or make new enum?
             Destroy(item);
         }
 
