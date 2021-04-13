@@ -67,9 +67,15 @@ public class Player : MonoBehaviour
     private float vert_vel;
     private Vector2 cur_direction;
     private IEnumerator jumped = null;
+    
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+
+    [SerializeField]
+    [Tooltip("rate at which it grows")]
+    private float growthRate;
+
     #endregion
 
     #region Unity_funcs
@@ -97,6 +103,7 @@ public class Player : MonoBehaviour
         {
             if (curr_size > 0) {
                 curr_size--;
+                this.transform.localScale = new Vector3(this.transform.localScale.x - growthRate, this.transform.localScale.y - growthRate, this.transform.localScale.z - growthRate);
             }
         }
         if( attack_timer<= 0  && ( Input.GetKeyDown("i") || Input.GetKeyDown("z")))
@@ -253,7 +260,10 @@ public class Player : MonoBehaviour
     {
         if (curr_size < max_size) {
             curr_size++;
+            float scale = curr_size * growthRate;
+            this.transform.localScale = new Vector3(1.5f + scale, 1.5f + scale, 1f + scale);
         }
+
     }
 
     #endregion
@@ -288,6 +298,14 @@ public class Player : MonoBehaviour
         {
             status = power.Ice; 
             Debug.Log(status);
+            Destroy(item);
+        }
+
+        if(item.tag == "sizeCrystal")
+        {
+            size_up();
+            status = power.None; 
+            Debug.Log(status); // should stay at default None? or make new enum?
             Destroy(item);
         }
 
