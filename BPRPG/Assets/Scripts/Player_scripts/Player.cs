@@ -16,9 +16,10 @@ public class Player : MonoBehaviour
     [Tooltip("amount of damage basic attack deals to enemy")]
     private int dmg;
     private float attack_timer;
+    private float attackPointDist;
 
     // holds status/power of the player (gained from collecting crystal)
-    private enum power {None, Fire, Ice}; // add more...
+    public enum power {None, Fire, Ice}; // add more...
     power status = power.None;
 
     // things added for flamethrower class !
@@ -66,6 +67,10 @@ public class Player : MonoBehaviour
     private float vert_vel;
     private Vector2 cur_direction;
     private IEnumerator jumped = null;
+    
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
 
     [SerializeField]
     [Tooltip("rate at which it grows")]
@@ -81,7 +86,7 @@ public class Player : MonoBehaviour
         vert_vel = 0;
         curr_health = max_health;
         attack_timer = 0f;
-
+        attackPointDist = attackPoint.transform.position.x - this.transform.position.x;
         //flamethrwer
         flExist = false;
         HpBar.value = 1;
@@ -93,6 +98,7 @@ public class Player : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
         move();
+        switchAttackPoint();
         if (Input.GetKeyDown("space"))
         {
             if (curr_size > 0) {
@@ -102,7 +108,8 @@ public class Player : MonoBehaviour
         }
         if( attack_timer<= 0  && ( Input.GetKeyDown("i") || Input.GetKeyDown("z")))
         {
-            StartCoroutine(Attack());
+            //StartCoroutine(Attack());
+            Attack();
         } else if (attack_timer > 0)
         {
             attack_timer -= Time.deltaTime;
@@ -179,19 +186,43 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Attack_funcs
-    IEnumerator Attack()
-    {
-        yield return new WaitForSeconds(hitboxtiming);
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + cur_direction, new Vector2(attack_range, attack_range), 0f, Vector2.zero);
+    // IEnumerator Attack()
+    // {
+    //     yield return new WaitForSeconds(hitboxtiming);
+    //     RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + cur_direction, new Vector2(attack_range, attack_range), 0f, Vector2.zero);
 
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit.transform.CompareTag("Enemy"))
-            {
+    //     foreach (RaycastHit2D hit in hits)
+    //     {
+    //         
+    //     }
+    //     yield return new WaitForSeconds(hitboxtiming);
+    // }
+    void Attack() {
+       // yield return new WaitForSeconds(hitboxtiming);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach (Collider2D hit in hits) {
+            if (hit.transform.CompareTag("Enemy")) {
                 hit.transform.GetComponent<Enemy>().TakeDamage(dmg);
             }
         }
-        yield return new WaitForSeconds(hitboxtiming);
+      //  yield return new WaitForSeconds(hitboxtiming);
+    }
+
+    void OnDrawGizmosSelected() {
+        if (attackPoint == null) {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    void switchAttackPoint() {
+        Vector3 position = attackPoint.transform.position;
+    if (Input.GetKeyDown("a")) {
+        position.x = this.transform.position.x - attackPointDist;
+    } else if (Input.GetKeyDown("d")) {
+        position.x = this.transform.position.x + attackPointDist;
+    }
+        attackPoint.transform.position = position;
     }
 
     private void Flame()
@@ -273,11 +304,14 @@ public class Player : MonoBehaviour
         if(item.tag == "sizeCrystal")
         {
             size_up();
-            status = power.None; 
-            Debug.Log(status); // should stay at default None? or make new enum?
             Destroy(item);
         }
 
         // Repeat if statement for different type of crystals/droplets
+    }
+
+
+    public Player.power getPowerStatus() {
+        return status;
     }
 }

@@ -12,6 +12,8 @@ TagManager:
   - fireCrystal
   - iceCrystal
   - Switch
+  - Ice Barrier
+  - Fire Barrier
   - sizeCrystal
   - Movable
   layers:
