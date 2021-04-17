@@ -13,6 +13,7 @@ TagManager:
   - iceCrystal
   - Switch
   - sizeCrystal
+  - Movable
   layers:
   - Default
   - TransparentFX
