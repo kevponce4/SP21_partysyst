@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//TMPro for Damage Numbers
+using TMPro;
+
 public class Player : MonoBehaviour
 {
 
-    #region attack_vars
+    #region Attack_vars
     [SerializeField]
     [Tooltip("the time untill the hitbox is created")]
     private float hitboxtiming;
@@ -64,6 +67,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     [Tooltip("How long we want to be jumping")]
     private float jump_len;
+    private float curjump_len;
+    private float jump_timer;
     private float vert_vel;
     private Vector2 cur_direction;
     private IEnumerator jumped = null;
@@ -145,8 +150,7 @@ public class Player : MonoBehaviour
             //vert_vel = jump_vel;
         } else if ( y_input <= 0 && !can_jump && jumped !=null)
         {
-            StopCoroutine(jumped);
-            vert_vel = 0;
+            curjump_len = jump_timer + .5f;
             jumped = null;
         }
         if(x_input != 0)
@@ -167,10 +171,11 @@ public class Player : MonoBehaviour
     {
         can_jump = false;
         //float jump_timer = jump_len;
-        float jump_timer = 0;
-        while(jump_timer < jump_len)
+        jump_timer = 0;
+        curjump_len = jump_len;
+        while(jump_timer < curjump_len)
         {
-            vert_vel = Mathf.Lerp(jump_vel, 0, jump_timer / jump_len);
+            vert_vel = Mathf.Lerp(jump_vel, 0, jump_timer / curjump_len);
             jump_timer += Time.deltaTime;
             yield return null;
         }
@@ -270,12 +275,16 @@ public class Player : MonoBehaviour
 
 
     #region health_func
+    [SerializeField]
+    GameObject damageTextPrefab;
     public void TakeDamage(int dmg)
     {
         curr_health -= dmg;
         float tempcur =  curr_health;
         float tempmax = max_health;
         HpBar.value =  tempcur /  tempmax;
+        GameObject DamageTextInstance = Instantiate(damageTextPrefab, this.transform);
+        DamageTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(dmg.ToString());
         if (curr_health <= 0)
         {
             Destroy(this.gameObject);

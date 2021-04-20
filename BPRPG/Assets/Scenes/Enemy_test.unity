@@ -705,12 +705,23 @@ MonoBehaviour:
   attack_range: 1
   dmg: 2
   flames: {fileID: 0}
+  lastdir: 0
+  ice: {fileID: 0}
   max_health: 5
+  HpBar: {fileID: 0}
   move_speed: 10
   jump_vel: 10
   can_jump: 0
   jump_len: 2
+  attackPoint: {fileID: 0}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  growthRate: 0
   curr_size: 0
+  max_size: 0
+  damageTextPrefab: {fileID: 0}
 --- !u!50 &1835337513
 Rigidbody2D:
   serializedVersion: 4

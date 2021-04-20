@@ -270,6 +270,8 @@ MonoBehaviour:
   movespeed: 5
   attack_delay: 60
   attack_damage: 2
+  damageTextPrefab: {fileID: 5982808442428756932, guid: 0a59bc32bf470e046a08c028da92ca2d,
+    type: 3}
 --- !u!70 &6650048809112863776
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
