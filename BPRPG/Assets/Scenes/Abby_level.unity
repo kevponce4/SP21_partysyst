@@ -288,6 +288,12 @@ PrefabInstance:
       propertyPath: growthRate
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3476598829435490514, guid: b108c34a5e40dce4db1cf6f248b2cf17,
+        type: 3}
+      propertyPath: damageTextPrefab
+      value: 
+      objectReference: {fileID: 5982808442428756932, guid: 0a59bc32bf470e046a08c028da92ca2d,
+        type: 3}
     - target: {fileID: 3476598829435490515, guid: b108c34a5e40dce4db1cf6f248b2cf17,
         type: 3}
       propertyPath: m_Name

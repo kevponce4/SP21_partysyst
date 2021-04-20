@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TextMeshPro for damage numbers
+using TMPro;
+
 public class Enemy : MonoBehaviour
 {
 
@@ -109,9 +112,13 @@ public class Enemy : MonoBehaviour
     #endregion
 
     #region Health_funcs
+    [SerializeField]
+    public GameObject damageTextPrefab;
     public void TakeDamage(int dmg)
     {
         curr_health -= dmg;
+        GameObject DamageTextInstance = Instantiate(damageTextPrefab, this.transform);
+        DamageTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(dmg.ToString());
         if (curr_health <= 0)
         {
             OnDeath();

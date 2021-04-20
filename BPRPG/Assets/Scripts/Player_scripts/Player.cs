@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//TMPro for Damage Numbers
+using TMPro;
+
 public class Player : MonoBehaviour
 {
 
-    #region attack_vars
+    #region Attack_vars
     [SerializeField]
     [Tooltip("the time untill the hitbox is created")]
     private float hitboxtiming;
@@ -272,12 +275,16 @@ public class Player : MonoBehaviour
 
 
     #region health_func
+    [SerializeField]
+    GameObject damageTextPrefab;
     public void TakeDamage(int dmg)
     {
         curr_health -= dmg;
         float tempcur =  curr_health;
         float tempmax = max_health;
         HpBar.value =  tempcur /  tempmax;
+        GameObject DamageTextInstance = Instantiate(damageTextPrefab, this.transform);
+        DamageTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(dmg.ToString());
         if (curr_health <= 0)
         {
             Destroy(this.gameObject);

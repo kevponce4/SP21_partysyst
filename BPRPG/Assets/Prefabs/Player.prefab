@@ -237,8 +237,11 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
+  growthRate: 0
   curr_size: 0
   max_size: 5
+  damageTextPrefab: {fileID: 5982808442428756932, guid: 0a59bc32bf470e046a08c028da92ca2d,
+    type: 3}
 --- !u!70 &3476598829435490348
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
