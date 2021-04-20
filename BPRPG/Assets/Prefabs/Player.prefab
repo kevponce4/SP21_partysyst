@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8082580906610592933}
   m_Layer: 0
   m_Name: AttackPoint
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,11 +232,12 @@ MonoBehaviour:
   jump_vel: 24
   can_jump: 0
   jump_len: 2
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 8082580906610592933}
   attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
+  growthRate: 0
   curr_size: 0
   max_size: 5
 --- !u!70 &3476598829435490348
