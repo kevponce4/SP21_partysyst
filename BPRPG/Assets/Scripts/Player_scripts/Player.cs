@@ -283,7 +283,7 @@ public class Player : MonoBehaviour
         float tempcur =  curr_health;
         float tempmax = max_health;
         HpBar.value =  tempcur /  tempmax;
-        GameObject DamageTextInstance = Instantiate(damageTextPrefab, this.transform);
+        GameObject DamageTextInstance = Instantiate(damageTextPrefab, this.transform.position, Quaternion.identity, this.transform);
         DamageTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(dmg.ToString());
         if (curr_health <= 0)
         {

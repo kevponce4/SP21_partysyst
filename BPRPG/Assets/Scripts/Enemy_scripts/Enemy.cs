@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         curr_health -= dmg;
-        GameObject DamageTextInstance = Instantiate(damageTextPrefab, this.transform);
+        GameObject DamageTextInstance = Instantiate(damageTextPrefab, this.transform.position, Quaternion.identity, this.transform);
         DamageTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(dmg.ToString());
         if (curr_health <= 0)
         {
