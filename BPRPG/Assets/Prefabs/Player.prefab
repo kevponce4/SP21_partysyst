@@ -237,7 +237,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
-  growthRate: 0
+  growthRate: 0.2
   curr_size: 0
   max_size: 5
   damageTextPrefab: {fileID: 5982808442428756932, guid: 0a59bc32bf470e046a08c028da92ca2d,
