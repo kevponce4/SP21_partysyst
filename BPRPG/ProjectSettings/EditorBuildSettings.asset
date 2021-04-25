@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 449966f8d561ed649bb466148ca32b03
+  - enabled: 1
+    path: Assets/Scenes/Abby_level.unity
+    guid: 9b64ccec17cd04d0788f5871d435d8a0
+  - enabled: 1
+    path: Assets/Scenes/level.unity
+    guid: e12685ce7cd0c4d4a926d1790d4d2518
   m_configObjects: {}
