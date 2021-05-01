@@ -12,6 +12,8 @@ public class Feet : MonoBehaviour
         if (collision.transform.CompareTag("floor"))
         {
             Pl.can_jump = true;
+        } else if (collision.transform.CompareTag("button")) {
+            collision.GetComponent<Button>().switchh();
         }
         // Debug.Log(Pl.can_jump);
     }

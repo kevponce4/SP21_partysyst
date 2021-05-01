@@ -16,6 +16,7 @@ TagManager:
   - Fire Barrier
   - sizeCrystal
   - Movable
+  - button
   layers:
   - Default
   - TransparentFX
