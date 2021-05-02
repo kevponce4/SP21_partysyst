@@ -736,12 +736,12 @@ PrefabInstance:
     - target: {fileID: 5528213708831517696, guid: 6c34d670cbb36524985e3f508a5c1165,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5528213708831517696, guid: 6c34d670cbb36524985e3f508a5c1165,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5528213709518778514, guid: 6c34d670cbb36524985e3f508a5c1165,
         type: 3}
@@ -751,7 +751,7 @@ PrefabInstance:
     - target: {fileID: 5528213709518778514, guid: 6c34d670cbb36524985e3f508a5c1165,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5528213709518778526, guid: 6c34d670cbb36524985e3f508a5c1165,
         type: 3}
@@ -16797,6 +16797,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1547443306}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1985844068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1411796336738935008, guid: 5d3de73fe5687b9469b326b7bc5a5fd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1571035798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1985844072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985844068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a326a3cf35bdd4896e8cadc7f05e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 5
+  onFire: 0
+  burnCD: 0.5
+  burnSprite: {fileID: 0}
 --- !u!1001 &2033070040
 PrefabInstance:
   m_ObjectHideFlags: 0

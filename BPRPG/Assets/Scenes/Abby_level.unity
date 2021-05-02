@@ -1343,6 +1343,11 @@ PrefabInstance:
       propertyPath: objectToFollow
       value: 
       objectReference: {fileID: 69266823}
+    - target: {fileID: 4686159310460455119, guid: 3e0de29183e11a94d9f9c9caac851cfd,
+        type: 3}
+      propertyPath: botThreshold
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4686159310460455123, guid: 3e0de29183e11a94d9f9c9caac851cfd,
         type: 3}
       propertyPath: m_Name

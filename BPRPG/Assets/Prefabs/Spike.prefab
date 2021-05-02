@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2685394677675176660}
   - component: {fileID: 2685394677675176661}
   - component: {fileID: 2685394677675176658}
-  - component: {fileID: 8035362210454436387}
+  - component: {fileID: -5729205940097564616}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -98,16 +98,19 @@ MonoBehaviour:
   spikeDmg: 5
   bombDmg: 0
   m_particles: {fileID: 0}
---- !u!135 &8035362210454436387
-SphereCollider:
+--- !u!58 &-5729205940097564616
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2685394677675176656}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
