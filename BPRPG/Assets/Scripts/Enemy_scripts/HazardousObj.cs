@@ -9,22 +9,22 @@ public class HazardousObj : MonoBehaviour
 
     [SerializeField]
     private int bombDmg;
-
-    private SphereCollider myCollider;
+    private CircleCollider2D myCollider;
     public Transform m_particles;
     private float time = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        myCollider = transform.GetComponent<SphereCollider>();
+        myCollider = transform.GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(PlaceBomb());
-
+        if (this.tag == "bomb") {
+            StartCoroutine(PlaceBomb());
+        }
     }
 
     IEnumerator PlaceBomb() {

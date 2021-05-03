@@ -277,6 +277,8 @@ public class Player : MonoBehaviour
     #region health_func
     [SerializeField]
     GameObject damageTextPrefab;
+    private int healthPickUp = 3;
+
     public void TakeDamage(int dmg)
     {
         curr_health -= dmg;
@@ -313,6 +315,19 @@ public class Player : MonoBehaviour
         if(item.tag == "sizeCrystal")
         {
             size_up();
+            Destroy(item);
+        }
+
+        if (item.tag == "heart") {
+            int tempHealth = healthPickUp + curr_health;
+            if (tempHealth > max_health) {
+                curr_health = max_health;
+            } else {
+                curr_health = tempHealth;
+            }
+            float tempcur =  curr_health;
+            float tempmax = max_health;
+            HpBar.value =  tempcur /  tempmax;
             Destroy(item);
         }
 
