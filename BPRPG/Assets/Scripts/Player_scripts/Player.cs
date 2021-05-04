@@ -51,6 +51,10 @@ public class Player : MonoBehaviour
 
     #region Unity_vars
     private Rigidbody2D PlayerRB;
+    [SerializeField]
+    private GameManager gm;
+    [SerializeField]
+    private int currlevel;
     #endregion
 
     #region Movement_vars
@@ -233,7 +237,8 @@ public class Player : MonoBehaviour
     private void Flame()
     {
         Flamethrower.dir = lastdir;
-        Instantiate(flames, this.transform.position + new Vector3(2, 0, 0), this.transform.rotation);
+        float s = curr_size;
+        Instantiate(flames, this.transform.position + new Vector3(2.5f + s*10f, -.5f, 0), this.transform.rotation);
         //you need to make a bullet before you make attack ideally
         //set the bulets velocity
         //look up instantaite
@@ -290,6 +295,17 @@ public class Player : MonoBehaviour
         if (curr_health <= 0)
         {
             Destroy(this.gameObject);
+            if (currlevel == 0)
+            {
+                gm.TutorialLevel();
+            } else if(currlevel == 1)
+            {
+                gm.JaneLevel();
+            }
+            else
+            {
+                gm.AbbyLevel();
+            }
         }
     }
     #endregion
